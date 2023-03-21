@@ -60,4 +60,28 @@ public class UserController {
             return ResponseEntity.badRequest().body(UNKNOWN_EXCEPTION);
         }
     }
+
+//some new test feature
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity removeUser2(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(String.format(USER_SUCCESSFULLY_REMOVED, userService.delete(id)));
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.status(404).body(notFoundApiResponse(e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(UNKNOWN_EXCEPTION);
+        }
+    }
+
+    //some new test feature
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity removeUser3(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(String.format(USER_SUCCESSFULLY_REMOVED, userService.delete(id)));
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.status(404).body(notFoundApiResponse(e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(UNKNOWN_EXCEPTION);
+        }
+    }
 }
